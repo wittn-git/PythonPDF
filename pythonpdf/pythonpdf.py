@@ -1,4 +1,5 @@
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
+from PIL import Image
 from os.path import exists
 
 def merge(doc_names, result_name):
@@ -28,3 +29,8 @@ def split(doc_name, page, result_names):
         if(exists(result_names[i])): raise Exception("Output file already exists")
         with open(result_names[i],'wb') as out:
             writer.write(out)
+
+def convert_png(doc_name, result_name):
+    img = Image.open(doc_name)
+    img = img.convert('RGB')
+    img.save(result_name)

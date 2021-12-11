@@ -4,6 +4,7 @@ This tool contains a python-script, with which various operations with PDF-docum
 # Dependencies
    
     - PyPDF2
+    - PIL
 
 # Functions
 
@@ -17,3 +18,6 @@ Extracts every page in list pages of file named doc_name and saves them as resul
     
             split(doc_name, page, result_names)
 Splits document with name doc_name after given page and saves the resulting pds as result_names.
+
+            convertPNG(doc_name, result_name)
+Converts a given png-image to a pdf-document and saves it as result_name.

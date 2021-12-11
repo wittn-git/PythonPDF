@@ -1,0 +1,1 @@
+find . -type f ! -iname "example_pdf.pdf" ! -iname "cleanup.sh" ! -iname "demo.py" ! -iname "example_png.png" -delete

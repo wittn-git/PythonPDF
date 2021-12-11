@@ -14,15 +14,17 @@ def extract(doc_name, pages, result_name):
     reader = PdfFileReader(doc_name)
     for page in pages:
         writer.addPage(reader.getPage(page-1))
-    #if(exists(result_name)): raise Exception("Output file already exists")
-    writer.write(result_name)  
+    if(exists(result_name)): raise Exception("Output file already exists")
+    with open(result_name,'wb') as out:
+        writer.write(out)
 
 def split(doc_name, page, result_names):
     reader = PdfFileReader(doc_name)
-    ranges = ((0, page), (page+1, reader.getNumPages))
+    ranges = ((0, page), (page+1, reader.getNumPages()))
     for i in range(2):
         writer = PdfFileWriter()
         for page in range(ranges[i][0], ranges[i][1]):
             writer.addPage(reader.getPage(page-1))
         if(exists(result_names[i])): raise Exception("Output file already exists")
-        writer.write(result_names[i])  
+        with open(result_names[i],'wb') as out:
+            writer.write(out)

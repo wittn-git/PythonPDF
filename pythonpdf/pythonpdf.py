@@ -3,7 +3,7 @@ from PIL import Image
 from os.path import exists
 
 def merge(doc_names, result_name):
-    merger = PdfFileMerger()
+    merger = PdfFileMerger(strict=False)
     for pdf in doc_names:
         merger.append(pdf)
     if(exists(result_name)): raise Exception("Output file already exists")
